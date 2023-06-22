@@ -1,14 +1,7 @@
 ﻿using Jira.main.pageFactory;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JiraCsharp.tests
+namespace Jira.tests
 {
     [TestFixture]
     public class LoginPageTests
@@ -27,8 +20,28 @@ namespace JiraCsharp.tests
         public void validLogin()
         {
             loginPage.loggingIn(Util.username, Util.password);
-
+            DashboardPage dashboardPage = new DashboardPage();
+            ProfilePage profilePage = new ProfilePage();
+            dashboardPage.navigateProfilePage();
+            Assert.That(Util.username, Is.EqualTo(profilePage.GetUsername()));
+            dashboardPage.logout();
         }
+        [Test]
+        public void emptyFieldLogin()
+        {
+            loginPage.loggingIn("", "");
+            Assert.That(EXPECTED_ERROR_MSG, Is.EqualTo(loginPage.GetErrorMessage()));
+        }
+
+        [Test]
+        public void logoutAfterSuccessfulLogin()
+        {
+            loginPage.loggingIn(Util.username, Util.password);
+            DashboardPage dashboardPage = new DashboardPage();
+            dashboardPage.logout();
+            Assert.That(EXPECTED_LOGOUT_MSG, Is.EqualTo(loginPage.GetLogoutMessage()));
+        }
+
         [TearDown]
         public void Cleanup()
         {
