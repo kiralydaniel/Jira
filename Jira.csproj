@@ -11,10 +11,14 @@
 
   <ItemGroup>
     <None Remove="main\resources\init.properties" />
+    <None Remove="main\resources\issues.csv" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="main\resources\init.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="main\resources\issues.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

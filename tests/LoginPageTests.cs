@@ -17,28 +17,28 @@ namespace Jira.tests
             loginPage.NavigateTo(Util.baseURL);
         }
         [Test]
-        public void validLogin()
+        public void ValidLogin()
         {
-            loginPage.loggingIn(Util.username, Util.password);
+            loginPage.LoggingIn(Util.username, Util.password);
             DashboardPage dashboardPage = new DashboardPage();
             ProfilePage profilePage = new ProfilePage();
-            dashboardPage.navigateProfilePage();
+            dashboardPage.NavigateProfilePage();
             Assert.That(Util.username, Is.EqualTo(profilePage.GetUsername()));
-            dashboardPage.logout();
+            dashboardPage.Logout();
         }
         [Test]
-        public void emptyFieldLogin()
+        public void EmptyFieldLogin()
         {
-            loginPage.loggingIn("", "");
+            loginPage.LoggingIn("", "");
             Assert.That(EXPECTED_ERROR_MSG, Is.EqualTo(loginPage.GetErrorMessage()));
         }
 
         [Test]
-        public void logoutAfterSuccessfulLogin()
+        public void LogoutAfterSuccessfulLogin()
         {
-            loginPage.loggingIn(Util.username, Util.password);
+            loginPage.LoggingIn(Util.username, Util.password);
             DashboardPage dashboardPage = new DashboardPage();
-            dashboardPage.logout();
+            dashboardPage.Logout();
             Assert.That(EXPECTED_LOGOUT_MSG, Is.EqualTo(loginPage.GetLogoutMessage()));
         }
 

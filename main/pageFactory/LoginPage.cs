@@ -43,7 +43,7 @@ namespace Jira.main.pageFactory
             loginBtn.Click();
         }
 
-        public void loggingIn(string username, string password)
+        public void LoggingIn(string username, string password)
         {
             EnterUsername(username);
             EnterPassword(password);

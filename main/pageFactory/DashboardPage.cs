@@ -49,58 +49,62 @@ namespace Jira.main.pageFactory
             return issueSummaryErrorMsg.Text;
         }
 
-        public void clickProfileBtn()
+        public void ClickProfileBtn()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(profileBtnLocator));
             profileBtn = driver.FindElement(profileBtnLocator);
             profileBtn.Click();
         }
 
-        public void clickProfile()
+        public void ClickProfile()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(profileLocator));
             profile = driver.FindElement(profileLocator);
             profile.Click();
         }
-        public void clickLogoutBtn()
+        public void ClickLogoutBtn()
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(logoutBtnLocator));
             logoutBtn = driver.FindElement(logoutBtnLocator);
             logoutBtn.Click();
         }
-        public void navigateProfilePage()
+        public void NavigateProfilePage()
         {
-            clickProfileBtn();
-            clickProfile();
+            ClickProfileBtn();
+            ClickProfile();
         }
 
-        public void logout()
+        public void Logout()
         {
-            clickProfileBtn();
-            clickLogoutBtn();
+            ClickProfileBtn();
+            ClickLogoutBtn();
         }
-        public void clickCreatedIssueLink()
+        public void WaitForProfileBtn()
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(profileBtnLocator));
+        }
+        public void ClickCreatedIssueLink()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(createdIssueLinkLocator));
             createdIssueLink = driver.FindElement(createdIssueLinkLocator);
             createdIssueLink.Click();
         }
 
-        public void clickCreateBtn()
+        public void ClickCreateBtn()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(createBtnLocator));
             createBtn = driver.FindElement(createBtnLocator);
             createBtn.Click();
         }
 
-        public void clickCreateIssueBtn()
+        public void ClickCreateIssueBtn()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(createIssueBtnLocator));
             createIssueBtn = driver.FindElement(createIssueBtnLocator);
             createIssueBtn.Click();
         }
 
-        public void clickCancelIssueBtn()
+        public void ClickCancelIssueBtn()
         {
             wait.Until(ExpectedConditions.ElementIsVisible(cancelIssueBtnLocator));
             cancelIssueBtn = driver.FindElement(cancelIssueBtnLocator);
