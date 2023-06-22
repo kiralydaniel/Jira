@@ -34,7 +34,7 @@ namespace Jira.tests
         }
 
         [Test]
-        [TestCaseSource(typeof(Util), nameof(Util.BrowseIssueTestData), new object[] { "main/resources/issues.csv" })]
+        [TestCaseSource(typeof(Util), nameof(Util.TestData), new object[] { "main/resources/issues.csv" })]
         public void BrowseIssueTest(string issueUrl, string expectedIssueKey)
         {
             BrowseIssue(issueUrl, expectedIssueKey);

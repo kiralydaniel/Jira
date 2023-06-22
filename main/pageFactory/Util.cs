@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Jira.main.pageFactory
 {
@@ -57,20 +55,26 @@ namespace Jira.main.pageFactory
 
         public static IEnumerable<TestCaseData> TestDataSource(string csvFilePath)
         {
-
-            // Read the CSV file and extract the test data
             using (var reader = new StreamReader(csvFilePath))
             {
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var fields = line.Split(',');
-
-                    // Create a TestCaseData instance with the test data
                     var testCaseData = new TestCaseData(fields[0], fields[1]);
 
                     yield return testCaseData;
                 }
+            }
+        }
+
+        public static IEnumerable<TestCaseData> TestData(string csvFilePath)
+        {
+            var testData = Util.TestDataSource(csvFilePath);
+
+            foreach (var testCaseData in testData)
+            {
+                yield return testCaseData;
             }
         }
     }
