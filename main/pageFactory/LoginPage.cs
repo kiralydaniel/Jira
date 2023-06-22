@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 
 
 namespace Jira.main.pageFactory
@@ -51,12 +52,14 @@ namespace Jira.main.pageFactory
 
         public string GetErrorMessage()
         {
+            wait.Until(ExpectedConditions.ElementIsVisible(errorMsgLocator));
             errorMsg = driver.FindElement(errorMsgLocator);
             return errorMsg.Text;
         }
 
         public string GetLogoutMessage()
         {
+            wait.Until(ExpectedConditions.ElementIsVisible(logoutMsgLocator));
             logoutMsg = driver.FindElement(logoutMsgLocator);
             return logoutMsg.Text;
         }
