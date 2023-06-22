@@ -1,6 +1,7 @@
 ﻿using Jira.main.pageFactory;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace Jira.main.pageFactory
@@ -8,6 +9,7 @@ namespace Jira.main.pageFactory
     public class BasePage
     {
         protected IWebDriver driver;
+        protected WebDriverWait wait;
         string browserType = Environment.GetEnvironmentVariable("browserType");
 
         public BasePage()
@@ -16,7 +18,9 @@ namespace Jira.main.pageFactory
             {
                 browserType = "Chrome";
             }
-            this.driver = WebDriverFactory.CreateWebDriver(browserType);
+            driver = WebDriverFactory.CreateWebDriver(browserType);
+            driver.Manage().Window.Maximize();
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         public void NavigateTo(string url)
