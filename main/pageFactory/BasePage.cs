@@ -1,8 +1,6 @@
-﻿using Jira.main.pageFactory;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Utilities;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
+
 
 namespace Jira.main.pageFactory
 {
