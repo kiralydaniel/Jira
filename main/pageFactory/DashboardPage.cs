@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace Jira.main.pageFactory
+namespace Jira.Main.PageFactory
 {
     public class DashboardPage : BasePage
     {
@@ -42,10 +42,10 @@ namespace Jira.main.pageFactory
             issueSummaryErrorMsg = driver.FindElement(issueSummaryErrorMsgLocator);
             return issueSummaryErrorMsg.Text;
         }
-
+        
         public void ClickProfileBtn()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(profileBtnLocator));
+            wait.Until(ExpectedConditions.ElementToBeClickable(profileBtnLocator));
             profileBtn = driver.FindElement(profileBtnLocator);
             profileBtn.Click();
         }

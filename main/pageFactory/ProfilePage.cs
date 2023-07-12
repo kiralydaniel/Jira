@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace Jira.main.pageFactory
+namespace Jira.Main.PageFactory
 {
     public class ProfilePage : BasePage
     {

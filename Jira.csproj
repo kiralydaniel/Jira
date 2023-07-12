@@ -10,15 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="main\resources\init.properties" />
-    <None Remove="main\resources\issues.csv" />
+    <None Remove="Main\Resources\init.properties" />
+    <None Remove="Main\Resources\issues.csv" />
+    <None Remove="Main\Resources\issuesWithError.csv" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="main\resources\init.properties">
+    <Content Include="Main\Resources\init.properties">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="main\resources\issues.csv">
+    <Content Include="Main\Resources\issues.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Main\Resources\issuesWithError.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

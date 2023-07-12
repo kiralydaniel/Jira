@@ -1,12 +1,15 @@
-﻿using Jira.main.pageFactory;
+﻿using Jira.Main.PageFactory;
 using NUnit.Framework;
 
-namespace Jira.tests
+namespace Jira.Tests
 {
     [TestFixture]
     public class LoginPageTests
     {
         private LoginPage loginPage;
+        private ProfilePage profilePage;
+        private DashboardPage dashboardPage;
+
         static string EXPECTED_ERROR_MSG = "Sorry, your username and password are incorrect - please try again.";
         static string EXPECTED_LOGOUT_MSG = "You are now logged out. Any automatic login has also been stopped.";
 
@@ -14,16 +17,16 @@ namespace Jira.tests
         public void Init()
         {
             loginPage = new LoginPage();
-            loginPage.NavigateTo(Util.baseURL);
+            dashboardPage = new DashboardPage();
+            profilePage = new ProfilePage();
+            loginPage.NavigateTo(Util.BaseURL);
         }
         [Test]
         public void ValidLogin()
         {
-            loginPage.LoggingIn(Util.username, Util.password);
-            DashboardPage dashboardPage = new DashboardPage();
-            ProfilePage profilePage = new ProfilePage();
+            loginPage.LoggingIn(Util.Username, Util.Password);
             dashboardPage.NavigateProfilePage();
-            Assert.That(Util.username, Is.EqualTo(profilePage.GetUsername()));
+            Assert.That(Util.Username, Is.EqualTo(profilePage.GetUsername()));
             dashboardPage.Logout();
         }
         [Test]
@@ -36,7 +39,7 @@ namespace Jira.tests
         [Test]
         public void LogoutAfterSuccessfulLogin()
         {
-            loginPage.LoggingIn(Util.username, Util.password);
+            loginPage.LoggingIn(Util.Username, Util.Password);
             DashboardPage dashboardPage = new DashboardPage();
             dashboardPage.Logout();
             Assert.That(EXPECTED_LOGOUT_MSG, Is.EqualTo(loginPage.GetLogoutMessage()));
@@ -45,7 +48,7 @@ namespace Jira.tests
         [TearDown]
         public void Cleanup()
         {
-            BasePage.Teardown();
+            BasePage.Shutdown();
         }
     }
 }

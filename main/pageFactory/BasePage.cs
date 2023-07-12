@@ -2,13 +2,14 @@
 using OpenQA.Selenium.Support.UI;
 
 
-namespace Jira.main.pageFactory
+namespace Jira.Main.PageFactory
 {
     public class BasePage
     {
         protected IWebDriver driver;
         protected WebDriverWait wait;
-        string browserType = Environment.GetEnvironmentVariable("browserType");
+        readonly string browserType = Util.BrowserType.ToLower();
+        readonly bool isRemote = Util.IsRemote;
 
         public BasePage()
         {
@@ -16,7 +17,7 @@ namespace Jira.main.pageFactory
             {
                 browserType = "Chrome";
             }
-            driver = WebDriverFactory.CreateWebDriver(browserType);
+            driver = WebDriverFactory.CreateWebDriver(browserType, isRemote);
             driver.Manage().Window.Maximize();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
@@ -31,7 +32,7 @@ namespace Jira.main.pageFactory
             driver.Navigate().Refresh();
         }
 
-        public static void Teardown()
+        public static void Shutdown()
         {
             WebDriverFactory.ShutdownWebDriver();
         }

@@ -1,13 +1,8 @@
-﻿using Jira.main.pageFactory;
+﻿using Jira.Main.PageFactory;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Jira.tests
+
+namespace Jira.Tests
 {
     [TestFixture]
     public class BrowseIssueTests
@@ -22,8 +17,8 @@ namespace Jira.tests
             loginPage = new LoginPage();
             issuePage = new IssuePage();
             dashboardPage = new DashboardPage();
-            loginPage.NavigateTo(Util.baseURL);
-            loginPage.LoggingIn(Util.username, Util.password);
+            loginPage.NavigateTo(Util.BaseURL);
+            loginPage.LoggingIn(Util.Username, Util.Password);
         }
 
         public void BrowseIssue(string issueUrl, string expectedIssueKey)
@@ -34,16 +29,26 @@ namespace Jira.tests
         }
 
         [Test]
-        [TestCaseSource(typeof(Util), nameof(Util.TestData), new object[] { "main/resources/issues.csv" })]
+        [TestCaseSource(typeof(Util), nameof(Util.TestData), new object[] { "Main/Resources/issues.csv" })]
         public void BrowseIssueTest(string issueUrl, string expectedIssueKey)
         {
             BrowseIssue(issueUrl, expectedIssueKey);
         }
 
+        [Test]
+        [TestCaseSource(typeof(Util), nameof(Util.TestData), new object[] { "Main/Resources/issuesWithError.csv" })]
+        public void BrowseIssuesWithError(string issueUrl, string errorMessage)
+        {
+            dashboardPage.WaitForProfileBtn();
+            loginPage.NavigateTo(issueUrl);
+            Assert.That(errorMessage, Is.EqualTo(issuePage.CantViewErrorDisplayed()));
+
+        }
+
         [TearDown]
         public void Cleanup()
         {
-            BasePage.Teardown();
+            BasePage.Shutdown();
         }
     }
 }
