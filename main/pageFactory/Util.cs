@@ -4,13 +4,15 @@ namespace Jira.Main.PageFactory
 {
     public class Util
     {
-        private static readonly string initPropertiesFilePath = "main/resources/init.properties";
+        private static readonly string initPropertiesFilePath = "Main/Resources/init.properties";
         private static readonly Dictionary<string, string> initProperties;
         public static string BrowserType { get; private set; }
         public static string Username { get; private set; }
         public static string Password { get; private set; }
         public static string BaseURL { get; private set; }
+        public static string GridURL { get; private set; }
         public static bool IsRemote { get; private set; }
+        
 
         static Util()
         {
@@ -19,7 +21,9 @@ namespace Jira.Main.PageFactory
             Username = GetPropertyValue("username");
             Password = GetPropertyValue("password");
             BaseURL = GetPropertyValue("baseURL");
+            GridURL = GetPropertyValue("gridURL");
             IsRemote = bool.Parse(GetPropertyValue("isRemote"));
+            
         }
 
         public static Dictionary<string, string> ReadInitPropertiesFile(string filePath)
