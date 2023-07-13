@@ -11,7 +11,7 @@ namespace Jira.Main.PageFactory
         private readonly By createBtnLocator = By.Id("create_link");
         private readonly By projectFieldLocator = By.Id("project-field");
         private readonly By issueTypeFieldLocator = By.Id("issuetype-field");
-        private readonly By summaryLocator = By.Id("summary");
+        private readonly By summaryFieldLocator = By.Id("summary");
         private readonly By createIssueBtnLocator = By.Id("create-issue-submit");
         private readonly By cancelIssueBtnLocator = By.XPath("//*[text()='Cancel']");
         private readonly By createIssueStringLocator = By.XPath("//h2[normalize-space()='Create Issue']");
@@ -25,7 +25,7 @@ namespace Jira.Main.PageFactory
         private IWebElement createBtn;
         private IWebElement projectField;
         private IWebElement issueTypeField;
-        private IWebElement summary;
+        private IWebElement summaryField;
         private IWebElement createIssueBtn;
         private IWebElement createIssueString;
         private IWebElement createdIssueLink;
@@ -103,6 +103,33 @@ namespace Jira.Main.PageFactory
             wait.Until(ExpectedConditions.ElementIsVisible(cancelIssueBtnLocator));
             cancelIssueBtn = driver.FindElement(cancelIssueBtnLocator);
             cancelIssueBtn.Click();
+        }
+
+        public void FillProjectField(string project)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(projectFieldLocator));
+            projectField = driver.FindElement(projectFieldLocator);
+            projectField.Click();
+            projectField.SendKeys(project);
+            createIssueString = driver.FindElement(createIssueStringLocator);
+            createIssueString.Click();
+        }
+
+        public void FillTypeField(string issueType)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(issueTypeFieldLocator));
+            issueTypeField = driver.FindElement(issueTypeFieldLocator);
+            issueTypeField.Click();
+            issueTypeField.SendKeys(issueType);
+            createIssueString = driver.FindElement(createIssueStringLocator);
+            createIssueString.Click();
+        }
+
+        public void FillSummaryField(string summaryData)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(summaryFieldLocator));
+            summaryField = driver.FindElement(summaryFieldLocator);
+            summaryField.SendKeys(summaryData);
         }
     }
 }
