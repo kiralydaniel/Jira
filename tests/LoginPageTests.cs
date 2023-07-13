@@ -10,8 +10,8 @@ namespace Jira.Tests
         private ProfilePage profilePage;
         private DashboardPage dashboardPage;
 
-        static string EXPECTED_ERROR_MSG = "Sorry, your username and password are incorrect - please try again.";
-        static string EXPECTED_LOGOUT_MSG = "You are now logged out. Any automatic login has also been stopped.";
+        static string expectedErrorMsg = "Sorry, your username and password are incorrect - please try again.";
+        static string expectedLogoutMsg = "You are now logged out. Any automatic login has also been stopped.";
 
         [SetUp]
         public void Init()
@@ -33,7 +33,7 @@ namespace Jira.Tests
         public void EmptyFieldLogin()
         {
             loginPage.LoggingIn("", "");
-            Assert.That(EXPECTED_ERROR_MSG, Is.EqualTo(loginPage.GetErrorMessage()));
+            Assert.That(expectedErrorMsg, Is.EqualTo(loginPage.GetErrorMessage()));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Jira.Tests
             loginPage.LoggingIn(Util.Username, Util.Password);
             DashboardPage dashboardPage = new DashboardPage();
             dashboardPage.Logout();
-            Assert.That(EXPECTED_LOGOUT_MSG, Is.EqualTo(loginPage.GetLogoutMessage()));
+            Assert.That(expectedLogoutMsg, Is.EqualTo(loginPage.GetLogoutMessage()));
         }
 
         [TearDown]
