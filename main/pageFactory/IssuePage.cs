@@ -2,7 +2,7 @@
 using SeleniumExtras.WaitHelpers;
 
 
-namespace Jira.main.pageFactory
+namespace Jira.Main.PageFactory
 {
     public class IssuePage : BasePage
     {
@@ -56,7 +56,7 @@ namespace Jira.main.pageFactory
             return summary.Text;
         }
 
-        public string GeThetType()
+        public string GetTheType()
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(typeLocator));
             type = driver.FindElement(typeLocator);
@@ -84,7 +84,7 @@ namespace Jira.main.pageFactory
             popUpDeleteBtn.Click();
         }
 
-        public bool IsDeleteIssueValidate()
+        public bool DeletedIssueValidate()
         {
             wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(deleteIssuePopUpLocator));
             deleteIssuePopUp = driver.FindElement(deleteIssuePopUpLocator);
@@ -97,13 +97,6 @@ namespace Jira.main.pageFactory
             ClickDeleteBtn();
             ClickPopUpDeleteBtn();
         }
-        public int IssueListSize()
-        {
-            wait.Until(ExpectedConditions.ElementToBeClickable(issueListLocator));
-            IList<IWebElement> liElements = issueList.FindElements(By.TagName("li"));
-            return liElements.Count;
-        }
-
         public void ClickOnEditIssueBtn()
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(editIssueBtnLocator));
