@@ -10,8 +10,8 @@ namespace Jira.Tests
         private ProfilePage profilePage;
         private DashboardPage dashboardPage;
 
-        static string expectedErrorMsg = "Sorry, your username and password are incorrect - please try again.";
-        static string expectedLogoutMsg = "You are now logged out. Any automatic login has also been stopped.";
+        private readonly string expectedErrorMsg = "Sorry, your username and password are incorrect - please try again.";
+        private readonly string expectedLogoutMsg = "You are now logged out. Any automatic login has also been stopped.";
 
         [SetUp]
         public void Init()
