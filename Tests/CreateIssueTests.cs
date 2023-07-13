@@ -1,6 +1,6 @@
 ﻿using Jira.Main.PageFactory;
 using NUnit.Framework;
-using System.Collections;
+
 
 namespace Jira.Tests
 {
@@ -10,8 +10,8 @@ namespace Jira.Tests
         private LoginPage loginPage;
         private IssuePage issuePage;
         private DashboardPage dashboardPage;
-        private static string createTestString = "New Issue1";
-        private static string summaryErrorMsg = "You must specify a summary of the issue.";
+        private readonly string createTestString = "New Issue1";
+        private readonly string summaryErrorMsg = "You must specify a summary of the issue.";
 
         [SetUp]
         public void Init()
