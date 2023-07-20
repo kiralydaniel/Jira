@@ -40,10 +40,13 @@ namespace Jira.Tests
             dashboardPage.FillSummaryField(summary);
             dashboardPage.ClickCreateIssueBtn();
             dashboardPage.ClickCreatedIssueLink();
-            Assert.That(type, Is.EqualTo(issuePage.GetTheType()));
-            Assert.That(summary, Is.EqualTo(issuePage.GetSummary()));
+            Assert.Multiple(() =>
+            {
+                Assert.That(type, Is.EqualTo(issuePage.GetTheType()));
+                Assert.That(summary, Is.EqualTo(issuePage.GetSummary()));
+            });
             issuePage.DeleteIssue();
-            Assert.IsTrue(issuePage.DeletedIssueValidate());
+            Assert.That(issuePage.DeletedIssueValidate(), Is.True);
         }
 
         [Test]
