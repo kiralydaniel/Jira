@@ -15,7 +15,7 @@ namespace Jira.Main.PageFactory
         {
             if (browserType == null)
             {
-                browserType = "Chrome";
+                browserType = "chrome";
             }
             driver = WebDriverFactory.CreateWebDriver(browserType, isRemote);
             driver.Manage().Window.Maximize();
