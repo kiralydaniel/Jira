@@ -21,7 +21,7 @@ namespace Jira.Tests
             loginPage.LoggingIn(Util.Username, Util.Password);
         }
 
-        public void BrowseIssue(string issueUrl, string expectedIssueKey)
+        private void BrowseIssue(string issueUrl, string expectedIssueKey)
         {
             dashboardPage.WaitForProfileBtn();
             loginPage.NavigateTo(issueUrl);

@@ -8,7 +8,7 @@ namespace Jira.Main.PageFactory
     public class WebDriverFactory
     {
         private static IWebDriver webDriver = null;
-        private static string gridUrl = Util.GridURL;
+        private static readonly string gridUrl = Util.GridURL;
 
         public static IWebDriver CreateWebDriver(string browserType, bool isRemote)
         {
