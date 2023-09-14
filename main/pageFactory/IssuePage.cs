@@ -15,7 +15,6 @@ namespace Jira.Main.PageFactory
         private readonly By typeLocator = By.Id("type-val");
         private readonly By deleteIssuePopUpLocator = By.XPath("//div[@class='aui-message closeable aui-message-success aui-will-close']");
         private readonly By popUpDeleteBtnLocator = By.XPath("//*[@id='delete-issue-submit']");
-        private readonly By issueListLocator = By.XPath("//*[@id='main']/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div[2]/div/ol");
         private readonly By editBtnLocator = By.Id("edit-issue-submit");
         private readonly By cancelBtnLocator = By.XPath("//button[normalize-space()='Cancel']");
         private readonly By errorFieldLocator = By.XPath("//div[@class='error']");
@@ -31,7 +30,6 @@ namespace Jira.Main.PageFactory
         private IWebElement type;
         private IWebElement deleteIssuePopUp;
         private IWebElement popUpDeleteBtn;
-        private IWebElement issueList;
         private IWebElement editBtn;
         private IWebElement cancelBtn;
         private IWebElement errorField;

@@ -13,6 +13,7 @@
     <None Remove="Main\Resources\browseProject.csv" />
     <None Remove="Main\Resources\cancelIssue.csv" />
     <None Remove="Main\Resources\createIssue.csv" />
+    <None Remove="Main\Resources\editIssue.csv" />
     <None Remove="Main\Resources\init.properties" />
     <None Remove="Main\Resources\issues.csv" />
     <None Remove="Main\Resources\issuesWithError.csv" />
@@ -26,6 +27,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Main\Resources\createIssue.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Main\Resources\editIssue.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Main\Resources\init.properties">
